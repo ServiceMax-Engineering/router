@@ -1,1 +1,0 @@
-require "nats/rpc/version"

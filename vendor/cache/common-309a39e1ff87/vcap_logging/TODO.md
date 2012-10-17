@@ -1,4 +1,0 @@
-- Sink impls.
--- File
--- Syslog
-- Formatter impl.

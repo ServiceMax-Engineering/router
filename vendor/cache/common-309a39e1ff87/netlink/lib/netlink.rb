@@ -1,8 +1,0 @@
-require 'netlink/constants'
-require 'netlink/errors'
-require 'netlink/error_message'
-require 'netlink/message'
-require 'netlink/socket'
-require 'netlink/types'
-require 'netlink/util'
-require 'netlink/version'
