@@ -14,6 +14,6 @@ gem 'vcap_logging', :require => ['vcap/logging'], :git => 'https://github.com/cl
 
 group :test do
   gem "rspec"
-  gem "rcov"
+  gem "rcov", "= 0.9.11"
   gem "ci_reporter"
 end
