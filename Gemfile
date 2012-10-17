@@ -9,7 +9,7 @@ gem "http_parser.rb", :require => "http/parser"
 gem "yajl-ruby", :require => ["yajl", "yajl/json_gem"]
 gem "sinatra"
 
-gem 'vcap_common', '~> 2.0.8', :git => 'https://github.com/intalio/vcap-common.git', :branch => 'host-only-support'
+gem 'vcap_common', :git => 'https://github.com/intalio/vcap-common.git', :branch => 'host-only-support'
 gem 'vcap_logging', :require => ['vcap/logging'], :git => 'https://github.com/cloudfoundry/common.git'
 
 group :test do
