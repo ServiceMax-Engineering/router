@@ -1,1 +1,0 @@
-This repo contains code that is shared between inner/outer shell
