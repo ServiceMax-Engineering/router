@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/intalio/vcap-common.git
-  revision: ab8ad1f8153219ab9999497c92f6dad8c5fd2618
+  revision: ee007e700a3fb72817787ae3e83cfbba4f54acbf
   branch: host-only-support
   specs:
     vcap_common (2.0.8)
