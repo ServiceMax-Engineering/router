@@ -88,9 +88,8 @@ DEPENDENCIES
   bundler (>= 1.0.10)
   ci_reporter
   eventmachine!
-  http_parser.rb
-  nats
-  rake
+  http_parser.rb (~> 0.5.3)
+  nats (~> 0.4.26)
   rcov (= 0.9.11)
   rspec
   sinatra
