@@ -19,8 +19,8 @@ class Router
       end
 
       if /^\/sauth.*/ =~ uri
-        host = host + "/sauth"
-        uri = uri.sub(/^\/sauth/, '')      
+        host = host + "/sec"
+        uri = uri.sub(/^\/sec/, '')      
       end
       if uri.nil? or uri.empty?
         uri = "/"
