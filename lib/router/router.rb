@@ -12,6 +12,22 @@ class Router
       VERSION
     end
 
+    def change_urls(host, uri)
+      if /^\/admin.*/ =~ uri
+        host = host + "/admin"
+        uri = uri.sub(/^\/admin/, '')
+      end
+
+      if /^\/sauth.*/ =~ uri
+        host = host + "/sauth"
+        uri = uri.sub(/^\/sauth/, '')      
+      end
+      if uri.nil? or uri.empty?
+        uri = "/"
+      end
+      return host, uri
+    end
+
     def stop
       log.info 'Signal caught, shutting down..'
 
