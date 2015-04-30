@@ -13,12 +13,12 @@ class Router
     end
 
     def change_urls(host, uri)
-      if /^\/admin.*/ =~ uri
+      if /^\/admin\/.*/ =~ uri or uri == "/admin"
         host = host + "/admin"
         uri = uri.sub(/^\/admin/, '')
       end
 
-      if /^\/sauth.*/ =~ uri
+      if /^\/sec\/.*/ =~ uri or uri == "/sec"
         host = host + "/sec"
         uri = uri.sub(/^\/sec/, '')      
       end
