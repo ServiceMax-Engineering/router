@@ -23,6 +23,7 @@ VCAP_TRACE_HEADER      = "X-Vcap-Trace"
 
 -- From nginx to uls
 ULS_HOST_QUERY         = "host"
+ULS_URI                = "uri"
 ULS_STATS_UPDATE       = "stats"
 ULS_STATS_LATENCY      = "response_latency"
 ULS_STATS_SAMPLES      = "response_samples"
@@ -34,7 +35,7 @@ ULS_APP_ID             = "app_id"
 ULS_BACKEND_ADDR       = "backend_addr"
 ULS_REQEST_TAGS        = "request_tags"
 ULS_ROUTER_IP          = "router_ip"
-
+ULS_NEW_URI            = "new_uri"
 --[[
   Message between nginx and uls (as http body)
   nginx -> uls
@@ -210,6 +211,7 @@ function generate_uls_request(ngx)
 
   -- add host in request
   uls_req_spec[uls.ULS_HOST_QUERY] = ngx.var.http_host
+  uls_req_spec[uls.ULS_URI] = ngx.var.uri
 
   -- add sticky session in request
   local uls_sticky_session = retrieve_vcap_sticky_session(
@@ -239,6 +241,7 @@ function post_process_subrequest(ngx, res)
   ngx.var.router_ip    = msg[ULS_ROUTER_IP]
   ngx.var.sticky       = msg[ULS_STICKY_SESSION]
   ngx.var.app_id       = msg[ULS_APP_ID]
+  ngx.var.new_uri      = msg[ULS_URI]
 
   ngx.log(ngx.DEBUG, "route "..ngx.var.http_host.." to "..ngx.var.backend_addr)
 end
