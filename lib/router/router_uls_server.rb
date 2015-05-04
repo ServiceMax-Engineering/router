@@ -21,7 +21,10 @@ class RouterULSServer < Sinatra::Base
     raise ParserError if uls_req.nil? || !uls_req.is_a?(Hash)
     stats, url = uls_req[ULS_STATS_UPDATE], uls_req[ULS_HOST_QUERY]
     sticky = uls_req[ULS_STICKY_SESSION]
+    uri = uls_req[ULS_URI]
 
+    
+    url, uri = Router.change_urls(url, uri)
     if stats then
       update_uls_stats(stats)
     end
@@ -57,6 +60,8 @@ class RouterULSServer < Sinatra::Base
         ULS_REQUEST_TAGS   => uls_req_tags,
         ULS_ROUTER_IP      => Router.inet,
         ULS_APP_ID         => droplet[:app] || 0,
+        ULS_HOST_QUERY     => url,
+        ULS_URI            => uri
       }
     end
 
