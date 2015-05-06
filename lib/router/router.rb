@@ -12,17 +12,19 @@ class Router
       VERSION
     end
 
-    def change_urls(host, uri)
-      if /^\/admin\/.*/ =~ uri or uri == "/admin"
-        host = host + "/admin"
-        uri = uri.sub(/^\/admin/, '')
+    def change_urls(host, uri, appbase)
+      return host, uri if appbase.nil? or appbase.empty?
+      if uri == appbase
+         host = host + appbase
+         uri = "/"
+      elsif uri.index(appbase + "/") == 0
+         host = host + appbase
+         uri = uri[appbase.length..-1]
+      else
+        #if uri is not related to appbase, just go through
       end
 
-      if /^\/sec\/.*/ =~ uri or uri == "/sec"
-        host = host + "/sec"
-        uri = uri.sub(/^\/sec/, '')      
-      end
-      if uri.nil? or uri.empty?
+      if uri.nil? or url.empty?
         uri = "/"
       end
       return host, uri

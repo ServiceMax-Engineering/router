@@ -22,9 +22,9 @@ class RouterULSServer < Sinatra::Base
     stats, url = uls_req[ULS_STATS_UPDATE], uls_req[ULS_HOST_QUERY]
     sticky = uls_req[ULS_STICKY_SESSION]
     uri = uls_req[ULS_URI]
-
+    appbase = uls_req[ULS_APPBASE]
     
-    url, uri = Router.change_urls(url, uri)
+    url, uri = Router.change_urls(url, uri, appbase)
     if stats then
       update_uls_stats(stats)
     end

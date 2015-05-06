@@ -12,6 +12,7 @@ VCAP_TRACE_HEADER      = 'X-Vcap-Trace'
 
 ULS_HOST_QUERY         = :"host"
 ULS_URI                = :"uri"
+ULS_APPBASE            = :"appbase"
 ULS_STATS_UPDATE       = :"stats"
 ULS_REQUEST_TAGS       = :"request_tags"
 ULS_RESPONSE_STATUS    = :"response_codes"
