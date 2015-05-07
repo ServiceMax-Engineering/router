@@ -24,6 +24,7 @@ VCAP_TRACE_HEADER      = "X-Vcap-Trace"
 -- From nginx to uls
 ULS_HOST_QUERY         = "host"
 ULS_URI                = "uri"
+ULS_APPBASE            = "appbase"
 ULS_STATS_UPDATE       = "stats"
 ULS_STATS_LATENCY      = "response_latency"
 ULS_STATS_SAMPLES      = "response_samples"
@@ -212,6 +213,7 @@ function generate_uls_request(ngx)
   -- add host in request
   uls_req_spec[uls.ULS_HOST_QUERY] = ngx.var.http_host
   uls_req_spec[uls.ULS_URI] = ngx.var.uri
+  uls_req_spec[uls.ULS_APPBASE] = ngx.var.appbase
 
   -- add sticky session in request
   local uls_sticky_session = retrieve_vcap_sticky_session(
