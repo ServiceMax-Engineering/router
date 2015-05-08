@@ -24,7 +24,7 @@ class Router
         #if uri is not related to appbase, just go through
       end
 
-      if uri.nil? or url.empty?
+      if uri.nil? or uri.empty?
         uri = "/"
       end
       return host, uri
