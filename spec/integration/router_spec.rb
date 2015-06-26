@@ -193,7 +193,7 @@ describe 'Router Integration Tests (require nginx running)' do
       (vcap_id = $1).should be
     end
 
-    cookie = "__VCAP_ID__=#{vcap_id}"
+    cookie = "__VCAP_ID__=#{vcap_id};HttpOnly"
     sticky_request = simple_sticky_request('sticky.vcap.me', '/sticky', cookie)
 
     results = send_requests_to_apps(RouterServer.host, RouterServer.port,
@@ -203,7 +203,7 @@ describe 'Router Integration Tests (require nginx running)' do
 
 
     # Verify bad cookie won't fail
-    bad_cookie = "__VCAP_ID__=bad_cookie"
+    bad_cookie = "__VCAP_ID__=bad_cookie;HttpOnly"
     sticky_request = simple_sticky_request('sticky.vcap.me', '/sticky', bad_cookie)
 
     results = send_requests_to_apps(RouterServer.host, RouterServer.port,
@@ -214,7 +214,7 @@ describe 'Router Integration Tests (require nginx running)' do
     # Verify cookie to backend that never exists
     Router.config({})
     droplet = { :url => 'sticky.vcap.me', :host => '10.10.10.10', :port => 10 }
-    down_dea_cookie = "__VCAP_ID__=#{Router.generate_session_cookie(droplet)}"
+    down_dea_cookie = "__VCAP_ID__=#{Router.generate_session_cookie(droplet)};HttpOnly"
     sticky_request = simple_sticky_request('sticky.vcap.me', '/sticky', bad_cookie)
 
     results = send_requests_to_apps(RouterServer.host, RouterServer.port,
